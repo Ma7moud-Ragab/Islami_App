@@ -41,4 +41,8 @@ class AppAssets {
   static const String radioOff = 'assets/images/radio/radio_off.png';
   static const String radioOn = 'assets/images/radio/radio_on.png';
 
+  // ===== Time =====
+  static const String timeBg = 'assets/images/time/time_screen.png';
+  static const String morningAzkar = 'assets/images/time/morning_azkar.png';
+  static const String eveningAzkar = 'assets/images/time/evenning_azkar.png';
 }

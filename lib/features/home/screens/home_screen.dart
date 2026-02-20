@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/core/constants/assets.dart';
 import 'package:islami/core/constants/colors.dart';
+import 'package:islami/features/Time/time_screen.dart';
 import 'package:islami/features/hadith/screens/hadith_screen.dart';
 import 'package:islami/features/quran/screens/quran_screen.dart';
 import 'package:islami/features/radio/screens/radio_screen.dart';
@@ -27,9 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       HadithScreen(),
       SebhaScreen(),
       RadioScreen(),
-      Center(
-        child: Text('Time', style: TextStyle(color: Colors.white)),
-      ),
+      TimeScreen(),
     ];
   }
 

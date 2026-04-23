@@ -24,43 +24,57 @@ class MostRecentItem extends StatelessWidget {
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(20),
       ),
+      clipBehavior: Clip.hardEdge,
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 17),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  englishName,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+          SizedBox(
+            width: 125,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 7),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    englishName,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                Text(
-                  arabicName,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
+                  Text(
+                    arabicName,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                Text(
-                  '$versesCount Verses',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                  Text(
+                    '$versesCount Verses',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const Spacer(),
-          Image.asset(AppAssets.mostRecentBg, width: 153, fit: BoxFit.cover),
+          SizedBox(
+            width: 153,
+            height: 150,
+            child: Image.asset(AppAssets.mostRecentBg, fit: BoxFit.cover),
+          ),
         ],
       ),
     );

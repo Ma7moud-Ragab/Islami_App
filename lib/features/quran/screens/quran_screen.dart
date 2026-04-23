@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/constants/assets.dart';
+import '../../../providers/reciter_provider.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/most_recent_list_view.dart';
 import '../widgets/sura_list_view.dart';
@@ -15,6 +17,15 @@ class QuranScreen extends StatefulWidget {
 
 class _QuranScreenState extends State<QuranScreen> {
   String searchQuery = '';
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch reciters when the screen is initialized
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ReciterProvider>().fetchReciters();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +48,7 @@ class _QuranScreenState extends State<QuranScreen> {
                 },
               ),
               SizedBox(height: 20.h),
+
               Text(
                 'Most Recently',
                 style: TextStyle(
@@ -52,7 +64,7 @@ class _QuranScreenState extends State<QuranScreen> {
                   child: const MostRecentListView(),
                 ),
               ),
-              SizedBox(height: 10.h),
+             SizedBox(height: 10.h),
               Text(
                 'Sura List',
                 style: TextStyle(

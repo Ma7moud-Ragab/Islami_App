@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         height: 34,
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: AppColors.secondary.withOpacity(0.6),
+          color: AppColors.secondary.withAlpha(153),
           borderRadius: BorderRadius.circular(30),
         ),
         child: Image.asset(icon, height: 26, color: Colors.white),

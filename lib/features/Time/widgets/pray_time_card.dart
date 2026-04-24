@@ -80,7 +80,7 @@ class _PrayerTimeCardState extends State<PrayerTimeCard> {
             ? prayerTimes.data.date.readable
             : "16 Jul,\n2024";
         final hijriDate = prayerTimes != null
-            ? "${prayerTimes!.data.date.hijri.date.split('-')[0]} ${prayerTimes.data.date.hijri.month.ar},\n${prayerTimes.data.date.hijri.year}"
+            ? "${prayerTimes.data.date.hijri.date.split('-')[0]} ${prayerTimes.data.date.hijri.month.ar},\n${prayerTimes.data.date.hijri.year}"
             : "09 Muh,\n1446";
         final weekday = prayerTimes != null
             ? prayerTimes.data.date.gregorian.weekday.en

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/core/constants/assets.dart';
 import 'package:islami/core/constants/colors.dart';
 import 'package:islami/features/radio/widgets/radio_model.dart';
 import '../../../services/audio_manager.dart';
@@ -40,42 +41,61 @@ class _RadioCardState extends State<RadioCard> {
         color: cardColor,
         borderRadius: BorderRadius.circular(24),
       ),
-      child: Column(
+      child: Stack(
         children: [
-          Text(
-            widget.radio.name,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          // Background image - behind all content
+          Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Image.asset(
+                isPlaying
+                    ? AppAssets.radioOn
+                    : AppAssets.radioOff,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const SizedBox.shrink();
+                },
+              ),
             ),
           ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
             children: [
-              IconButton(
-                iconSize: 32,
-                onPressed: widget.onPlayTap,
-                icon: Icon(
-                  color: iconColor,
-                  isPlaying ? Icons.pause_circle : Icons.play_circle,
+              Text(
+                widget.radio.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 20),
-              IconButton(
-                iconSize: 28,
-                onPressed: () {
-                  setState(() {
-                    isMuted = !isMuted;
-                  });
-                  AudioManager().setVolume(isMuted ? 0 : 1);
-                },
-                icon: Icon(
-                  color: iconColor,
-                  isMuted ? Icons.volume_off : Icons.volume_up,
-                ),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    iconSize: 32,
+                    onPressed: widget.onPlayTap,
+                    icon: Icon(
+                      color: iconColor,
+                      isPlaying ? Icons.pause_circle : Icons.play_circle,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  IconButton(
+                    iconSize: 28,
+                    onPressed: () {
+                      setState(() {
+                        isMuted = !isMuted;
+                      });
+                      AudioManager().setVolume(isMuted ? 0 : 1);
+                    },
+                    icon: Icon(
+                      color: iconColor,
+                      isMuted ? Icons.volume_off : Icons.volume_up,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
